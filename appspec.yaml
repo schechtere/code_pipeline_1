@@ -1,19 +1,18 @@
 version: 0.0
 os: linux
 files:
-  - source: index.nginx-debian.html
-    destination: /var/www/html/index.nginx-debian.html
-# hooks:
-#   BeforeInstall:
-#     - location: Scripts/UnzipResourceBundle.sh
-#     - location: Scripts/UnzipDataBundle.sh
-#   AfterInstall:
-#     - location: Scripts/RunResourceTests.sh
-#       timeout: 180
-#   ApplicationStart:
-#     - location: Scripts/RunFunctionalTests.sh
-#       timeout: 3600
-#   ValidateService:
-#     - location: Scripts/MonitorService.sh
-#       timeout: 3600
-#       runas: codedeployuser
+  - source: /
+    destination: /home/ec2-user/koa-app
+hooks:
+  ApplicationStop:
+    - location: scripts/application_stop.sh
+      timeout: 300
+      runas: ec2-user
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: ec2-user
+  ApplicationStart:
+    - location: scripts/application_start.sh
+      timeout: 300
+      runas: ec2-user
