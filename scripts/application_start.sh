@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #give permission for everything in the koa-app directory
-sudo chmod -R 777 /home/ec2-user/koa-app
+sudo chmod -R 777 /home/ubuntu/koa-app
 
 #navigate into our working directory where we have all our github files
-cd /home/ec2-user/koa-app
+cd /home/ubuntu/koa-app
 
 #add npm and node to path
 export NVM_DIR="$HOME/.nvm"	
